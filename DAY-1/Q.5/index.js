@@ -37,4 +37,4 @@ function resultShowing(count) {
   }
 }
 
-window.addEventListener("load",()=> resultShowing(count));
+resultShowing(count)

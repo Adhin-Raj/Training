@@ -14,8 +14,7 @@ async function fetchUser() {
   }
 }
 
-//table heading is not working
-fetchUser(); //what about normal calling without the load function
+fetchUser();
 
 function listingUsers(data) {
   tableRow.innerHTML = "";
