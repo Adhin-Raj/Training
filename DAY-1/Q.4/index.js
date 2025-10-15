@@ -10,6 +10,7 @@ taskList = JSON.parse(localStorage.getItem("tasks"));
 
 buttonEl.addEventListener("click", () => {
   let tasks = {};
+  if(inputEl.value =="")  return alert("please enter a task")
   tasks = { task: inputEl.value, isCompleted: false };
   let existingItem = JSON.parse(localStorage.getItem("tasks")) || [];
   existingItem = [...existingItem, tasks];
@@ -22,6 +23,9 @@ buttonEl.addEventListener("click", () => {
 
 function taskListMapping(taskList) {
   ulEl.innerHTML = "";
+  if(taskList.length ===0){
+    ulEl.innerHTML = "No task to finish!"
+  }
   taskList.map((item) => {
     const liEl = document.createElement("li");
     liEl.innerHTML = item.task;
@@ -45,7 +49,7 @@ pendingBtn.addEventListener("click", () => {
   taskListMapping(striked);
 });
 
-window.addEventListener("load", () => taskListMapping(taskList));
+taskListMapping(taskList)
 
 clearBtn.addEventListener("click", () => {
   localStorage.clear();
