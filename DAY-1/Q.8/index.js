@@ -24,8 +24,7 @@ function anagramCheck(word1, word2) {
   if (word1.length !== word2.length) {
     return false;
   }
-  for (let i = 0; i < word1.length; i++) {
-    const char = word1[i];
+  for (const char of word1) {
     if (!charCount[char]) {
       charCount[char] = 1;
     } else {
@@ -33,8 +32,7 @@ function anagramCheck(word1, word2) {
     }
   }
 
-  for (let i = 0; i < word2.length; i++) {
-    const char = word2[i];
+  for (const char of word2) {
     if (!charCount[char]) {
       return false;
     } else {
