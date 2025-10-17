@@ -2,7 +2,6 @@
 
 function isPalindrome(str) {
   const afterLowerStr = str.toLocaleLowerCase();
-  let arr = "";
 
   const pattern = /[a-z]/g;
   const result = afterLowerStr.match(pattern);
