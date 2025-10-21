@@ -24,18 +24,29 @@ randomWordSelect();
 function handleTyping(e){
     const {value} = e.target
     let count=0;
+        inputEl.style.color="gray"
+    // for(let i=0;i<randomWord.length;i++){
+    confirm.length(value[value.length] , randomWord[value.length])
+        if(value[value.length] === randomWord[value.length]){
+            // console.log(value[i],randomWord[i])
+            inputEl.style.color="green"
+        }
+        else{
+            inputEl.style.color="red"
+        }
+    // }
 
-    if(value.length === randomWord.length){
+    // if(value.length === randomWord.length){
         for(let i=0;i<value.length;i++){
             if(value[i] === randomWord[i]){
                 count++
             }
         }
-    }
+    // }
 
     let accuracy = ((count/randomWord.length) * 100).toFixed(2)
 
-    console.log(accuracy)
+    accEl.innerHTML=`Accuracy:${accuracy}`
 
 }
 

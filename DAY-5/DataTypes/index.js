@@ -9,6 +9,13 @@
 
 //2
 
+// function arrayCheck(val){
+//    return Array.isArray(val)
+// }
+
+// console.log(arrayCheck([1,2,3]))
+// console.log(arrayCheck({1:1,2:2}))
+// console.log(arrayCheck(...[1]))
 
 //3
 
@@ -42,3 +49,16 @@
 
 //5
 
+// let input = 'f3'
+
+// if(input !== isNaN(input)){
+//  console.log("NaN detected")
+// }
+
+    // const input = NaN
+
+    // if (input !== input) {
+    //     console.log("Nan detected") ;
+    // } else {
+    //     console.log(false);
+    // }
