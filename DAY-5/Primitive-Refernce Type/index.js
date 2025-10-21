@@ -76,6 +76,21 @@
 //5
 
 
-function updateUser(user){
-    
-}
+// function updateUser1(user){
+//     let lastActive = new Date()
+//     return {...user,lastActive}
+// }
+
+
+// function updateUser2(user){
+//     return user
+// }
+
+// const user={
+//     name:"walter",
+//     age:57,
+//     admin:false
+// }
+
+// console.log(updateUser1(user))
+// console.log(updateUser2(user))
