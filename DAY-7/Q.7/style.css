@@ -1,0 +1,32 @@
+
+    
+.content{
+    width:100%;
+    margin: 0;
+    height: 700px;
+    overflow-y: scroll;
+}
+
+.progress-container{
+    width: 90%;
+    display: flex;
+    position: relative;
+    margin-top: 50px;
+    margin-inline: auto;
+}
+
+.progress-overlay{
+    height:10px;
+    width: 100%;
+    background-color:rgb(223, 217, 217);
+    border-radius: 4px;
+}
+
+.progress-bar{
+    height:10px;
+    position: absolute;
+    background-color: red;
+    border-radius: 4px;
+
+
+}
