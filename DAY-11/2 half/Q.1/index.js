@@ -12,7 +12,7 @@ function highestIncreasingOrder(arr) {
 
   while (k < arr.length) {
     let largest = arr[k];
-    for (let i = k + 0; i < arr.length; i++) {
+    for (let i = k ; i < arr.length; i++) {
       if (!subArr.includes(largest)) {
         subArr.push(largest);
       }
