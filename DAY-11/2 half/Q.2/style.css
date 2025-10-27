@@ -1,0 +1,30 @@
+.list{
+    width: 80px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.list-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tooltip{
+    position: absolute;
+    width: fit-content;
+    border: none;
+    background-color: rgb(2, 2, 90);
+    border-radius: 4px;
+    color: white;
+    top: 0;
+    left: 0;
+}
+
+.none{
+    display: none;
+}
