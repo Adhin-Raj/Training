@@ -33,6 +33,6 @@ function handleMouseLeave(i) {
 window.addEventListener("mousemove", (e) => {
   x = e.clientX;
   y = e.clientY;
-  buttonEl.style.marginTop = `${y}px`;
-  buttonEl.style.marginLest = `${x}px`;
+  buttonEl.style.top = `${y}px`;
+  buttonEl.style.left = `${x}px`;
 });
