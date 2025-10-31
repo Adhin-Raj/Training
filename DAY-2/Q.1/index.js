@@ -1,6 +1,7 @@
 // 1. Write a program that checks if a given number is prime.
 
 function isPrime(n) {
+  if(typeof n !== "number") return false
   if (n < 2) {
     return false;
   }
@@ -14,11 +15,35 @@ function isPrime(n) {
   return true;
 }
 
-function primeTestCase(input,output){
-    return isPrime(input) === output ? true : false
-
+function primeTestCase(arr){
+  arr.forEach(element => {
+      const result = isPrime(element[0])
+      if(result === element[1]){
+        console.log("Passed")
+      }
+      else{
+        console.log("Failed")
+      }
+  }); 
 }
 
-console.log(isPrime(7,true))
-console.log(isPrime(10,false))
-console.log(primeTestCase(29,true))
+
+console.log(
+  primeTestCase([
+    [29, true],
+    [7, true],
+    [4, false],
+    [8, false],
+    [1, false],
+    ["1", false],
+    [50000, false],
+    [{}, false],
+    [[], false],
+    [179, true],
+    [true, false],
+    [100000, false],
+    ["12f", false],
+    [3, true],
+    [()=>console.log("log"),false]
+  ])
+);
