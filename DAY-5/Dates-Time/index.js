@@ -50,17 +50,39 @@
 
 
 
-//3 after referring
+//3 
 
 
-// function daysBetween(date1, date2){
-//  const oneDay = 24 * 60 * 60 * 1000 //one day in milliseconds
-//  const firstDate = new Date(date1)
-//  const secondDate = new Date(date2)
+function daysBetween(date1, date2){
+    
+ const oneDay = 24 * 60 * 60 * 1000 //one day in milliseconds
+ const firstDate = new Date(date1)
+ const secondDate = new Date(date2)
 
-//  const diff = Math.round(Math.abs(firstDate - secondDate)/oneDay)
+ const diff = Math.round(Math.abs(firstDate - secondDate)/oneDay)
 
-//  return diff
-// }
+ return diff
+}
 
-// console.log(daysBetween("11/08/2025", "11/01/2025"))
+function daysBetweenTest(array){
+    array.forEach(element => {
+        const result = daysBetween(element[0],element[1])
+        console.log(result)
+        if(result === element[2]) {
+            console.log("Passed")
+        }
+        else{
+            console.log("Failed")
+        }
+    });
+
+    return "Completed...!"
+}
+
+console.log(daysBetweenTest([
+    // ["11/08/2025", "11/01/2025",7],
+    // ["10/31/2025" , '01/01/2026',62],
+    // ["10/31/2025","05/27/2004",7827],
+    ["22/04/2025","10/31/2025",NaN]
+    // ["04/22/2025","10/31/2025",192]
+]))

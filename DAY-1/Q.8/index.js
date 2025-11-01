@@ -1,5 +1,4 @@
-// anagram
-const wordList = ["care", "race", "dog", "god", "cat", "acre"];
+
 function groupAnagram(wordList) {
   let sortedList = new Array();
   let groupedAnagram = new Array();
