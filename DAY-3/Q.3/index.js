@@ -2,6 +2,7 @@
 
 function deepCloning(obj) {
   const clone = structuredClone(obj);
+  console.log(JSON.stringify(clone) === JSON.stringify(obj))
   return clone;
 }
 
