@@ -30,14 +30,49 @@
 
 //4
 
-// function formatTimeZone(date,zone){
-//     const formatDate = new Intl.DateTimeFormat("en-US",{
-//         timeZone:zone
-//     }).format(date)
+function formatTimeZone(zone) {
+  try {
+    const date = new Date();
+    const formatDate = new Intl.DateTimeFormat("en-US", {
+      timeZone: zone,
+    }).format(date);
 
-//     return formatDate
-// }
+    return formatDate;
+  } catch (error) {
+    return "invalid time zone";
+  }
+}
 
-// const currentDate = new Date()
-// console.log(formatTimeZone(currentDate,'Asia/Kolkata'))
+function formatTimeZoneTest(array) {
+  array.forEach((item) => {
+    const result = formatTimeZone(item[0]);
+    // console.log(result)
+    if (result === item[1]) {
+      console.log("Passed");
+    } else {
+      console.log("Failed");
+    }
+  });
 
+  return "Completed...!";
+}
+
+console.log(
+  formatTimeZoneTest([
+    ["Asia/Kolkata", "10/31/2025"],
+    ["Africa/Abidjan", "10/31/2025"],
+    ["Australia/Sydney", "10/31/2025"],
+    ["hello", "invalid time zone"],
+    [123, "invalid time zone"],
+    [()=>item  + item,"invalid time zone"],
+    [[],"invalid time zone"],
+    ["Asia/Kathmandu","10/31/2025"],
+    ["Pacific/Honolulu","10/31/2025"],
+    ["America/Los_Angeles","10/31/2025"],
+    ["Europe/Minsk","10/31/2025"],
+    ["Asia/Yakutsk","10/31/2025"],
+    ["Asia/Bangkok","10/31/2025"],
+    [true,"invalid time zone"],
+    [["Pacific/Honolulu","Asia/Bangkok"],'invalid time zone']
+  ])
+);

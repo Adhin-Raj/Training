@@ -61,8 +61,8 @@ console.log(
     [["hello world"], "input should be string"],
     [{}, "input should be string"],
     [
-      "I don't have enemies and no one deserve to be hearted",
-      ["enemies", "deserve", "hearted"],
+      "I don't have enemies and no one deserve to be hurt",
+      ["enemies", "deserve", "hurt"],
     ],
     ["", [""]],
     [[], "input should be string"],

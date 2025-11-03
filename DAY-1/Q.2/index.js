@@ -28,6 +28,7 @@ function patternPrintTest(arr) {
   arr.forEach((element) => {
     let flag = false;
     const result = patternPrint(element[0]);
+    console.log(result)
     if (typeof result === "string" && result === element[1]) {
       console.log("Passed");
     } else {

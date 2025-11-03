@@ -185,7 +185,7 @@
 //     [
 //       "",
 //       (item) => item === undefined,
-//        "input should be an array and function",
+//        [],
 //     ],
 //      [
 //       ["walter", "jasse", "fring", "skyler"],

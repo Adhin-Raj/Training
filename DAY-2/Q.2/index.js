@@ -32,7 +32,7 @@ console.log(
     ["Hello world", 2],
     ["This is a sample sentence.", 5],
     ["Programming is fun!", 3],
-    ["i don't have enemies and no one deserve to be hearted.", 11],
+    ["i don't have enemies and no one deserve to be hurt.", 11],
     ["1 2 3 4 5", 5],
     [1, "input should be string"],
     [true, "input should be string"],
