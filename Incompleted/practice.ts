@@ -267,151 +267,267 @@ console.log(SortMixedNested([3, [2, [5, 1]], 4]))
 // Return:
 // An array of simplified summaries in this format:
 
-interface outputType {
-  name: string;
-  age: number;
-  experience: number;
-  score: number;
-  submittedDaysAgo: number;
-}
+// interface outputType {
+//   name: string;
+//   age: number;
+//   experience: number;
+//   score: number;
+//   submittedDaysAgo: number;
+// }
 
-interface inputType {
-    id: number;
-  profile: {
-    personal: {
-        name: string;
-        dob: string;
-        active: boolean;
-    };
-    professional: {
-        experience: {
-            totalYears: number;
-            domains: string[];
-        };
-        performance: {
-            score: string | null;
-            lastReview: string;
-        };
-    };
-};
-application: {
-    position: {
-        title: string;
-        level: string;
-    };
-    submission: {
-      date: string;
-      referred: boolean;
-    };
-};
-}
+// interface inputType {
+//     id: number;
+//   profile: {
+//     personal: {
+//         name: string;
+//         dob: string;
+//         active: boolean;
+//     };
+//     professional: {
+//         experience: {
+//             totalYears: number;
+//             domains: string[];
+//         };
+//         performance: {
+//             score: string | null;
+//             lastReview: string;
+//         };
+//     };
+// };
+// application: {
+//     position: {
+//         title: string;
+//         level: string;
+//     };
+//     submission: {
+//       date: string;
+//       referred: boolean;
+//     };
+// };
+// }
 
 
-function SortCandidatesByScoreAndExperience(data: inputType[]) {
-  const filtered = data.filter(
-    (item) =>
-      item.profile.personal.active === true &&
-      item.profile.professional.experience.totalYears >= 2 &&
-      isNaN(Number(item.profile.professional.performance.score))
+// function SortCandidatesByScoreAndExperience(data: inputType[]) {
+//   const filtered = data.filter(
+//     (item) =>
+//       {
+//        const  active = item.profile.personal.active === true 
+//     const  experience = item.profile.professional.experience.totalYears >= 2 
+
+//     const rawScore = item.profile.professional.performance.score
+
+//     if(!rawScore) return false
+
+//     const numericScore = Number(rawScore.replace('%',''))
+    
+//     return active && experience && !isNaN(numericScore)
+
+//       }
+      
+//   );
+
+//   let outputData: outputType[] = [];
+
+//   const today = new Date();
+
+//   filtered.map((item) => {
+//     let currentAge = Math.abs(
+//       Number(item.profile.personal.dob.slice(0, 4)) - today.getFullYear()
+//     );
+//     let submittedDate = new Date(item.application.submission.date);
+//     const diff = Math.floor(
+//       (today.getTime() - submittedDate.getTime()) / (1000 * 60 * 60 * 24)
+//     );
+
+//     let outputObj: outputType = {
+//       name: item.profile.personal.name,
+//       age: currentAge,
+//       experience: item.profile.professional.experience.totalYears,
+//       score: Number(item.profile.professional.performance.score?.slice(0, -1)),
+//       submittedDaysAgo: diff,
+//     };
+//     outputData.push(outputObj);
+//   });
+
+//   return outputData.sort((a,b)=> {
+//     if(a.score !== b.score) return b.score - a.score
+//     if(b.experience !== a.experience) return b.experience - a.experience
+//     if(a.submittedDaysAgo !== b.submittedDaysAgo) return b.submittedDaysAgo - a.submittedDaysAgo
+    
+//     return a.name.localeCompare(b.name)
+//   })
+// }
+
+// console.log(
+//   SortCandidatesByScoreAndExperience([
+//     {
+//       id: 1001,
+//       profile: {
+//         personal: { name: "Alice Johnson", dob: "1992-08-12", active: true },
+//         professional: {
+//           experience: { totalYears: 5, domains: ["frontend", "ui"] },
+//           performance: { score: "91%", lastReview: "2024-12-01" },
+//         },
+//       },
+//       application: {
+//         position: { title: "Frontend Engineer", level: "Mid" },
+//         submission: { date: "2025-02-10", referred: true },
+//       },
+//     },
+//     {
+//       id: 1002,
+//       profile: {
+//         personal: { name: "Brian Lee", dob: "1989-05-05", active: true },
+//         professional: {
+//           experience: { totalYears: 8, domains: ["backend", "api"] },
+//           performance: { score: "87.5%", lastReview: "2024-11-28" },
+//         },
+//       },
+//       application: {
+//         position: { title: "Backend Engineer", level: "Senior" },
+//         submission: { date: "2025-01-25", referred: false },
+//       },
+//     },
+//     {
+//       id: 1003,
+//       profile: {
+//         personal: { name: "Clara Doe", dob: "1995-11-30", active: false },
+//         professional: {
+//           experience: { totalYears: 4, domains: ["fullstack"] },
+//           performance: { score: "90%", lastReview: "2024-09-05" },
+//         },
+//       },
+//       application: {
+//         position: { title: "Fullstack Developer", level: "Mid" },
+//         submission: { date: "2025-01-12", referred: true },
+//       },
+//     },
+//     {
+//       id: 1004,
+//       profile: {
+//         personal: { name: "David Kim", dob: "1990-03-17", active: true },
+//         professional: {
+//           experience: { totalYears: 3, domains: ["frontend"] },
+//           performance: { score: null, lastReview: "2024-08-10" },
+//         },
+//       },
+//       application: {
+//         position: { title: "UI Developer", level: "Junior" },
+//         submission: { date: "2025-02-01", referred: true },
+//       },
+//     },
+//     {
+//       id: 1005,
+//       profile: {
+//         personal: { name: "Eva Green", dob: "1994-10-22", active: true },
+//         professional: {
+//           experience: { totalYears: 6, domains: ["frontend", "design"] },
+//           performance: { score: "93.2%", lastReview: "2024-12-15" },
+//         },
+//       },
+//       application: {
+//         position: { title: "Frontend Architect", level: "Senior" },
+//         submission: { date: "2025-01-20", referred: false },
+//       },
+//     },
+//   ])
+// );
+
+
+// function lastTenDigits(n:number) {
+//     if (typeof (n) != 'number' || Math.round(n) !== n || n <= 0)
+//         return 'Invalid number';
+//     let sum = 0n;
+//     for (let i = 1n; i <= BigInt(n); i++) {
+//         sum += i ** i;
+//     }
+//     let result = sum.toString().slice(-10).padStart(10, '0');
+//     return result;
+// }
+
+// console.log(lastTenDigits(10))
+
+
+
+
+
+// async function ParallelLimit<T>(tasks:Array<()=>Promise<T>>,limit:number) :Promise<T[]> {
+//     const result:T[] = []
+//     let index = 0
+
+//    async function worker() {
+//      while(index < tasks.length) {
+//         const taskIndex = index++
+//         const task  = tasks[taskIndex]
+//         result[index] = await task()
+//     }
+//    }
+
+
+
+//     const workers = Array.from({length:Math.min(limit,tasks.length)},()=>{
+//         worker()
+//     })
+
+
+//     await Promise.all(workers)
+
+// }
+
+
+
+
+// const tasks = [
+//   () => fetch('/api/1'),
+//   () => fetch('/api/2'),
+//   () => fetch('/api/3')
+// ];
+
+
+// await ParallelLimit(tasks, 2);
+
+
+async function ParallelLimit<T>(
+  tasks: Array<() => Promise<T>>,
+  limit: number
+): Promise<T[]> {
+  const result: T[] = [];
+  let index = 0;
+
+  async function worker() {
+    while (index < tasks.length) {
+      const taskIndex = index;
+      const task = tasks[index];
+      index++;
+      result[taskIndex] = await task();
+    }
+  }
+
+  const workers = Array.from(
+    { length: Math.min(limit, tasks.length) },
+    () => worker()
   );
 
-  let outputData: outputType[] = [];
+  await Promise.all(workers);
 
-  const today = new Date();
-
-  filtered.map((item) => {
-    let currentAge = Math.abs(
-      Number(item.profile.personal.dob.slice(0, 4)) - today.getFullYear()
-    );
-    let submittedDate = new Date(item.application.submission.date);
-    const diff = Math.floor(
-      (today.getTime() - submittedDate.getTime()) / (1000 * 60 * 60 * 24)
-    );
-
-    let outputObj: outputType = {
-      name: item.profile.personal.name,
-      age: currentAge,
-      experience: item.profile.professional.experience.totalYears,
-      score: Number(item.profile.professional.performance.score?.slice(0, -1)),
-      submittedDaysAgo: diff,
-    };
-    outputData.push(outputObj);
-  });
-
-  return outputData.sort((a,b)=> b.score - a.score)
+  return result;
 }
 
-console.log(
-  SortCandidatesByScoreAndExperience([
-    {
-      id: 1001,
-      profile: {
-        personal: { name: "Alice Johnson", dob: "1992-08-12", active: true },
-        professional: {
-          experience: { totalYears: 5, domains: ["frontend", "ui"] },
-          performance: { score: "91%", lastReview: "2024-12-01" },
-        },
-      },
-      application: {
-        position: { title: "Frontend Engineer", level: "Mid" },
-        submission: { date: "2025-02-10", referred: true },
-      },
-    },
-    {
-      id: 1002,
-      profile: {
-        personal: { name: "Brian Lee", dob: "1989-05-05", active: true },
-        professional: {
-          experience: { totalYears: 8, domains: ["backend", "api"] },
-          performance: { score: "87.5%", lastReview: "2024-11-28" },
-        },
-      },
-      application: {
-        position: { title: "Backend Engineer", level: "Senior" },
-        submission: { date: "2025-01-25", referred: false },
-      },
-    },
-    {
-      id: 1003,
-      profile: {
-        personal: { name: "Clara Doe", dob: "1995-11-30", active: false },
-        professional: {
-          experience: { totalYears: 4, domains: ["fullstack"] },
-          performance: { score: "90%", lastReview: "2024-09-05" },
-        },
-      },
-      application: {
-        position: { title: "Fullstack Developer", level: "Mid" },
-        submission: { date: "2025-01-12", referred: true },
-      },
-    },
-    {
-      id: 1004,
-      profile: {
-        personal: { name: "David Kim", dob: "1990-03-17", active: true },
-        professional: {
-          experience: { totalYears: 3, domains: ["frontend"] },
-          performance: { score: null, lastReview: "2024-08-10" },
-        },
-      },
-      application: {
-        position: { title: "UI Developer", level: "Junior" },
-        submission: { date: "2025-02-01", referred: true },
-      },
-    },
-    {
-      id: 1005,
-      profile: {
-        personal: { name: "Eva Green", dob: "1994-10-22", active: true },
-        professional: {
-          experience: { totalYears: 6, domains: ["frontend", "design"] },
-          performance: { score: "93.2%", lastReview: "2024-12-15" },
-        },
-      },
-      application: {
-        position: { title: "Frontend Architect", level: "Senior" },
-        submission: { date: "2025-01-20", referred: false },
-      },
-    },
-  ])
-);
+// Example tasks
+const tasks = [
+  () => fetch('/api/1').then(res => res.json()),
+  () => fetch('/api/2').then(res => res.json()),
+  () => fetch('/api/3').then(res => res.json())
+];
+
+// Call the function
+async function resultFun() {
+  try {
+    const result = await ParallelLimit(tasks, 2);
+    console.log(result);
+  } catch (err) {
+    console.error('Error:', err);
+  }
+}
+
+resultFun();
