@@ -6,7 +6,7 @@
 // Input: path = "a.x.c" → Output: undefined
 
 
-function getValueByPath(obj:{[key:string]:{[key:string]:{[key:string]:number}}},path:string) {
+function getValueByPath(obj:any,path:string) {
 
    const  pathStr = path.replaceAll('.','')
     

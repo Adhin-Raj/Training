@@ -217,36 +217,36 @@
 // Input: [3, [2, [5, 1]], 4]
 // Output: [1, [2, [3, 4]], 5
 
-type NestedArray =  number | NestedArray[]
+// type NestedArray =  number | NestedArray[]
 
-function SortMixedNested(arr:NestedArray) {
-    let allNumber:number[]=[]
-    function flattenArr(a:NestedArray) {
-        if(typeof a === 'number') {
-            allNumber.push(a)
-        }
-        else{
-            a.forEach(flattenArr)
-        }
-    }
+// function SortMixedNested(arr:NestedArray) {
+//     let allNumber:number[]=[]
+//     function flattenArr(a:NestedArray) {
+//         if(typeof a === 'number') {
+//             allNumber.push(a)
+//         }
+//         else{
+//             a.forEach(flattenArr)
+//         }
+//     }
 
-    flattenArr(arr)
+//     flattenArr(arr)
 
-    allNumber.sort((a,b)=>a-b)
+//     allNumber.sort((a,b)=>a-b)
 
-    function rebuild (a:NestedArray) : NestedArray {
-        if(typeof a === 'number' ) {
-           return allNumber.shift()!;
-        }
-        else{
-          return a.map(rebuild)
-        }
-    }
+//     function rebuild (a:NestedArray) : NestedArray {
+//         if(typeof a === 'number' ) {
+//            return allNumber.shift()!;
+//         }
+//         else{
+//           return a.map(rebuild)
+//         }
+//     }
 
-   return rebuild(arr)
-}
+//    return rebuild(arr)
+// }
 
-console.log(SortMixedNested([3, [2, [5, 1]], 4]))
+// console.log(SortMixedNested([3, [2, [5, 1]], 4]))
 
 // 4.Write a function SortCandidatesByScoreAndExperience(candidates) that processes a deeply nested list of candidate profiles.
 // The function should filter invalid entries, normalize data types, calculate derived values, and finally return a sorted list of simplified candidate summaries.
@@ -306,24 +306,23 @@ console.log(SortMixedNested([3, [2, [5, 1]], 4]))
 // };
 // }
 
-
 // function SortCandidatesByScoreAndExperience(data: inputType[]) {
 //   const filtered = data.filter(
 //     (item) =>
 //       {
-//        const  active = item.profile.personal.active === true 
-//     const  experience = item.profile.professional.experience.totalYears >= 2 
+//        const  active = item.profile.personal.active === true
+//     const  experience = item.profile.professional.experience.totalYears >= 2
 
 //     const rawScore = item.profile.professional.performance.score
 
 //     if(!rawScore) return false
 
 //     const numericScore = Number(rawScore.replace('%',''))
-    
+
 //     return active && experience && !isNaN(numericScore)
 
 //       }
-      
+
 //   );
 
 //   let outputData: outputType[] = [];
@@ -353,7 +352,7 @@ console.log(SortMixedNested([3, [2, [5, 1]], 4]))
 //     if(a.score !== b.score) return b.score - a.score
 //     if(b.experience !== a.experience) return b.experience - a.experience
 //     if(a.submittedDaysAgo !== b.submittedDaysAgo) return b.submittedDaysAgo - a.submittedDaysAgo
-    
+
 //     return a.name.localeCompare(b.name)
 //   })
 // }
@@ -433,7 +432,6 @@ console.log(SortMixedNested([3, [2, [5, 1]], 4]))
 //   ])
 // );
 
-
 // function lastTenDigits(n:number) {
 //     if (typeof (n) != 'number' || Math.round(n) !== n || n <= 0)
 //         return 'Invalid number';
@@ -447,10 +445,6 @@ console.log(SortMixedNested([3, [2, [5, 1]], 4]))
 
 // console.log(lastTenDigits(10))
 
-
-
-
-
 // async function ParallelLimit<T>(tasks:Array<()=>Promise<T>>,limit:number) :Promise<T[]> {
 //     const result:T[] = []
 //     let index = 0
@@ -463,19 +457,13 @@ console.log(SortMixedNested([3, [2, [5, 1]], 4]))
 //     }
 //    }
 
-
-
 //     const workers = Array.from({length:Math.min(limit,tasks.length)},()=>{
 //         worker()
 //     })
 
-
 //     await Promise.all(workers)
 
 // }
-
-
-
 
 // const tasks = [
 //   () => fetch('/api/1'),
@@ -483,51 +471,527 @@ console.log(SortMixedNested([3, [2, [5, 1]], 4]))
 //   () => fetch('/api/3')
 // ];
 
-
 // await ParallelLimit(tasks, 2);
 
+// async function ParallelLimit<T>(
+//   tasks: Array<() => Promise<T>>,
+//   limit: number
+// ): Promise<T[]> {
+//   const result: T[] = [];
+//   let index = 0;
 
-async function ParallelLimit<T>(
-  tasks: Array<() => Promise<T>>,
-  limit: number
-): Promise<T[]> {
-  const result: T[] = [];
-  let index = 0;
+//   async function worker() {
+//     while (index < tasks.length) {
+//       const taskIndex = index;
+//       const task = tasks[index];
+//       index++;
+//       result[taskIndex] = await task();
+//     }
+//   }
 
-  async function worker() {
-    while (index < tasks.length) {
-      const taskIndex = index;
-      const task = tasks[index];
-      index++;
-      result[taskIndex] = await task();
+//   const workers = Array.from(
+//     { length: Math.min(limit, tasks.length) },
+//     () => worker()
+//   );
+
+//   await Promise.all(workers);
+
+//   return result;
+// }
+
+// // Example tasks
+// const tasks = [
+//   () => fetch('/api/1').then(res => res.json()),
+//   () => fetch('/api/2').then(res => res.json()),
+//   () => fetch('/api/3').then(res => res.json())
+// ];
+
+// // Call the function
+// async function resultFun() {
+//   try {
+//     const result = await ParallelLimit(tasks, 2);
+//     console.log(result);
+//   } catch (err) {
+//     console.error('Error:', err);
+//   }
+// }
+
+// resultFun();
+
+// 1. Write a program to rotate an matrix by 90deg (clockwise).
+// Input:  [
+// [1,2,3],
+// [4,5,6],
+// [7,8,9]]
+
+// Output: [
+// [7,4,1],
+// [8,5,2],
+// [9,6,3]]
+
+// function rotate90Deg(matrix: number[][]) {
+//   let rotated = [];
+//   let subArr = [];
+//   for (let i = 0; i < matrix.length; i++) {
+//     for (let j = matrix.length - 1; j >= 0; j--) {
+//       subArr.push(matrix[j][i]);
+//     }
+//     rotated.push(subArr);
+//     subArr = [];
+//   }
+
+//   return rotated;
+// }
+
+// const matrix = [
+//   [1,2],
+//   [3,4]
+// ];
+
+// console.log(rotate90Deg(matrix));
+
+// 2. Write a program to parse query string into an object. Use '&' as separator.
+
+// Input: "name=John&age=20"
+// Output: { name: "John", age: "20" }
+
+// function separator(query:string) {
+//   let queryArr = query.split('&')
+//   let obj:{[key:string]:string} = {}
+
+//   for(query of queryArr) {
+//     const splited = query.split('=')
+//     obj[splited[0]] = splited[1]
+//   }
+//   return obj
+// }
+
+// console.log(separator("name=John&age=20"))
+
+// 5. Given a nested object and a target key, return the path to the key.
+
+// Input: {a:{b:{c:1}}}, "c"
+// Output: ['a','b','c']
+
+// function targetedPath(obj: any, tar: string) {
+//   let path: string[] = [];
+//   function targetArr(obj: any) {
+//     for(let key in obj){
+//         if(typeof obj[key] === 'object'  && tar !== key){
+//             path.push(key)
+//             targetArr(obj[key])
+//         }
+//         if(key !== tar && typeof obj[key] !== 'object') {
+//             path = []
+//         }
+//         if(key === tar) {
+//                 path.push(key)
+//                 return path
+//             }
+//         }
+
+//   }
+
+//     targetArr(obj);
+
+//     if(path.includes(tar)){
+//         return path
+//     }
+//     else{
+//         return "target is not present or nested is not object"
+//     }
+// }
+
+// console.log(targetedPath({ a: { b: { c: 1 } } }, "c"));
+// console.log(targetedPath({ x: 10, y: 20 }, "y"));
+// console.log(targetedPath({ a: { b: 2 } },"z"))
+// console.log(targetedPath({ a: { b: 2 }, c: 5 },"c"))
+// console.log(targetedPath({
+//   a: { b: { x: 1 } },
+//   p: { q: { r: { target: 9 } } }
+// },"target"))
+
+// console.log(targetedPath({
+//   a: [
+//     { b: 1 },
+//     { c: { d: 5 } }
+//   ]
+// },"d"))
+
+// console.log(targetedPath( {
+//   a: { target: 1 },
+//   b: { c: { target: 2 } }
+// },"target"))
+// console.log(targetedPath( { a: { b: { c: { d: { e: { f: 42 } } } } } }, "f"
+// ))
+
+// Promise Function Practice
+
+// Write a Promise that resolves after 3 seconds with the message "Done!".
+
+// new Promise((res,rej)=>{
+//     res("Done!")
+// }).then((res)=>console.log(res))
+
+// Create a function that returns a Promise which rejects if a number is negative and resolves otherwise.
+
+// function numberCheck(num:number):Promise<string>{
+//     return new Promise((res,rej)=>{
+//         if(num < 0){
+//             rej("Number is negative")
+//         }
+//         else{
+//             res("number is positive")
+//         }
+//     })
+// }
+
+// const fun = numberCheck(-1)
+
+// fun.then((res)=>console.log(res)).catch((error)=>console.log(error))
+
+// Convert a callback-based function (e.g., setTimeout) into a Promise-based one.
+
+// function promiseCallback(ms:number){
+//     return new Promise((res,rej)=>{
+//         setTimeout(() => {
+//             console.log("it will load after "+ms/1000+' seconds')
+//         }, ms);
+//     })
+// }
+
+// promiseCallback(3000).then((res)=>console.log(res)).catch((err)=>console.log(err))
+
+// function toPromise(callback:Function) {
+//     return new Promise((res,rej)=>{
+//         try {
+//             callback(res)
+//         } catch (error) {
+//             rej(error)
+//         }
+//     })
+// }
+
+// function timer(res:Function) {
+//     setTimeout(() => {
+//         console.log('Message came after 2 seconds')
+//         res()
+//     }, 2000);
+
+// }
+
+// toPromise(timer).then((res)=>console.log(res)).catch((err)=>console.log(err))
+
+// Chain two Promises so that the second one uses the result of the first.
+
+// const p =new Promise((res:(num:number)=>void)=>{
+//     res(1)
+// })
+
+// p.then((res:number)=> res + 1).then((res)=>console.log(res + 1))
+
+// Write code that logs "Success" if the Promise resolves and "Error" if it rejects.
+
+// function promiseFun(message:string) {
+//     return new Promise((res,rej)=>{
+//     if(message === "Success"){
+//         res(message)
+//     }
+//     else if(message === 'Error'){
+//         rej(message)
+//     }
+// })
+// }
+
+// let p = promiseFun('Error')
+
+// p.then((res)=>console.log(res)).catch((err)=>console.log("err",err))
+
+// Use Promise.all to wait for three Promises that resolve at different times.
+
+// const promiseOne = new Promise((res)=> {
+//     setTimeout(() => {
+
+//         res("promise one ")
+//     },2000);
+// })
+// const promiseTwo = new Promise((res)=>{
+//     setTimeout(() => {
+
+//         res("promise Two ")
+//     },4000);
+// })
+// const promiseThree = new Promise((res)=>{
+//     setTimeout(() => {
+
+//         res("promise Three ")
+//     },6000);
+// })
+// Promise.all([promiseOne,promiseTwo,promiseThree]).then((res)=>console.log(res)).catch((err)=>console.log(err))
+
+// Use Promise.race to return whichever Promise finishes first.
+
+// const promiseOne = new Promise((res,rej)=> {
+//         rej("promise one")
+// })
+// const promiseTwo = new Promise((res,rej)=>{
+//     rej("promise two")
+// })
+// const promiseThree = new Promise((res,rej)=>{
+//     rej("promise three")
+// })
+
+// Promise.any([promiseOne,promiseTwo,promiseThree]).then((res)=>console.log(res)).catch((err)=>console.log(err))
+
+// Implement a function retry<T>(fn: () => Promise<T>, retries: number) that retries a failed Promise.
+
+// with Promise
+
+// function retry<T>(fn:()=>Promise<T>,retries:number):Promise<T> {
+//         return fn().catch((err)=>{
+//             if(retries <= 0) {
+//                 return Promise.reject(err)
+//             }
+//             else{
+//               return  retry(fn,retries -1)
+//             }
+//         })
+// }
+
+// const p = ()=>new Promise((res,rej)=>{
+//     console.log('Trying...')
+//     rej('Failed')
+// })
+
+// retry(p,4).then((res)=>console.log('Success')).catch((err)=>console.log(err))
+
+// with async/await
+
+// async function retry<T>(fn:()=>Promise<T>,retries:number):Promise<T> {
+//     try {
+//        return await fn()
+//     } catch (error) {
+//         if(retries  === 0) {
+//              throw error
+//         }
+//         else{
+//           return  retry(fn,retries -1 )
+//         }
+//     }
+// }
+
+// const p = ()=>new Promise((res,rej)=>{
+//     console.log('Trying...')
+//     rej('Failed')
+// })
+
+// retry(p,3).then((res)=>console.log(res)).catch((err)=>console.log(err))
+
+// Create a function that runs an array of tasks sequentially using Promises (not async/await).
+
+// const task1 = () =>
+//   new Promise((res, rej) => {
+//     setTimeout(() => {
+//       console.log("Task 1 done!");
+//       res(1 + 1);
+//     }, 30);
+//   });
+
+// const task2 = () =>
+//   new Promise((res, rej) => {
+//     setTimeout(() => {
+//       console.log("Task 2 done!");
+//       res(2 + 2);
+//     }, 20);
+//   });
+
+// function sequentially(taskList:Array<Function>) {
+//     let result:number[] = []
+
+//     let chain:Promise<number | void> = Promise.resolve()
+
+//     taskList.forEach((task)=>{
+//         chain =  chain.then(()=>task()).then((res)=> result.push(res))
+//     })
+
+//     return chain.then(()=>result)
+// }
+
+// sequentially([task1,task2])
+
+//  Implement your own small version of Promise.all.
+
+function parallelRunning(taskList: Array<() => Promise<any>>) {
+  return new Promise((res, rej) => {
+    let result: any[] = [];
+    let completed = 0;
+
+    if (taskList.length === 0) {
+      res([]);
+    }
+
+    taskList.forEach((task, index) => {
+      task()
+        .then((val) => {
+          result[index] = val;
+          completed++;
+
+          if (completed === taskList.length) {
+            res(result);
+          }
+        })
+        .catch((err) => {
+          rej(err);
+        });
+    });
+  });
+}
+
+parallelRunning([task1, task2])
+  .then((res) => console.log(res))
+  .catch((err) => console.log(err));
+
+
+
+// Implement a timeout wrapper:
+
+// timeout<T>(promise: Promise<T>, ms: number): Promise<T>
+
+// which rejects if the Promise doesn’t finish in time.
+
+
+ function timeout<T>(promise:Promise<T>,ms:number) {
+  return new Promise((res,rej)=>{
+     const timer = setTimeout(() => {
+      rej(new Error('Rejected'))
+     }, ms);
+
+     promise.then((val)=>{
+      clearTimeout(timer)
+      res(val)
+     }).catch((err)=>rej(err))
+  })
+
+}
+
+const p = new Promise((res)=>setTimeout(() => {
+    res('resolved')
+}, 2000))
+
+timeout(p,2000).then((res)=>console.log(res)).catch((err)=>console.log(err))
+
+
+// Write an async function getValueUntilGreaterThanTen(fetchFn) that:
+// Repeatedly calls the provided async function fetchFn() until it returns a value greater
+// than 10, and then returns that value.
+// Example:
+// Input:
+// fetchFn → an async function that returns random numbers between 1 and 20
+// Output: value: 14
+
+
+const fetchFn = async () =>  Math.floor(Math.random() * 20) + 1
+
+async function getValueUntilGreaterThanTen(fetchFn:()=>Promise<number>) {
+  while(true){
+    const val = await fetchFn()
+    if(val > 10) {
+      return val
     }
   }
-
-  const workers = Array.from(
-    { length: Math.min(limit, tasks.length) },
-    () => worker()
-  );
-
-  await Promise.all(workers);
-
-  return result;
 }
 
-// Example tasks
+getValueUntilGreaterThanTen(fetchFn).then((res)=>console.log(res))
+
+
+
+// Write a function ParallelLimit(tasks, limit) where tasks is an array of functions that return Promises. Run only limit promises concurrently until all are resolved.
+// Example:
+
+async function ParallelLimit<T>(tasks: Array<() => Promise<T>>, limit: number): Promise<T[]> {
+    const results: T[] = [];
+    let index = 0;
+
+    async function worker() {
+        while (index < tasks.length) {
+            const current = index++;   
+            results[current] = await tasks[current]();
+        }
+    }
+
+    const workers = Array.from({ length: Math.min(limit, tasks.length) }, () => worker());
+
+    await Promise.all(workers);
+
+    return results;
+}
+
 const tasks = [
-  () => fetch('/api/1').then(res => res.json()),
-  () => fetch('/api/2').then(res => res.json()),
-  () => fetch('/api/3').then(res => res.json())
+    () => fetch('https://jsonplaceholder.typicode.com/todos/1').then(r => r.json()),
+    () => fetch('https://jsonplaceholder.typicode.com/todos/2').then(r => r.json()),
+    () => fetch('https://jsonplaceholder.typicode.com/todos/3').then(r => r.json())
 ];
 
-// Call the function
-async function resultFun() {
-  try {
-    const result = await ParallelLimit(tasks, 2);
-    console.log(result);
-  } catch (err) {
-    console.error('Error:', err);
-  }
-}
+ParallelLimit(tasks, 3).then((res)=>console.log(res)).catch((err)=>console.log(err))
 
-resultFun();
+
+
+// Remove Duplicates from an Array Without Using Set
+//        Return a new array with unique values.
+
+// function removeDuplicates(arr:number[]) {
+//     let newArr:number[] = []
+
+//     for(let i=0;i<arr.length;i++) {
+//         if(!newArr.includes(arr[i])){
+//             newArr.push(arr[i])
+//         }
+//     }
+
+//     return newArr
+// }
+
+// console.log(removeDuplicates([1,2,2,3,3,3,4]))
+
+
+
+// .  Find the Most Frequent Element in an Array
+// input: [1,2,2,3,3,3,4]
+// output: 3
+
+
+// function mostFrequent(arr:number[]) {
+//     let obj:{[key:number]:number} ={}
+
+//     for(let num of arr) {
+//         if(!obj[num]){
+//             obj[num] = 1
+//         }
+//         else{
+//             obj[num] = obj[num] + 1
+//         }
+//     }
+
+//     return Object.entries(obj).sort((a,b)=>b[1] - a[1])[0][0]
+// }
+
+// console.log(mostFrequent([1,2,2,2,2,3,3,3,4]))
+
+
+// Check if a Number is Armstrong Number (An Armstrong number is a number that is equal to the sum of its own digits, each raised to the power of the total number of digits)
+//      Armstrong Number: 153 = 1³ + 5³ + 3³
+
+// function armStrongNum(num:number) {
+//     const strNum = String(num)
+//     const len  = strNum.length
+//     let arr=[]
+//     for(let i=0;i<len;i++) {
+//        arr.push(Number(strNum[i]) ** len) 
+//     }
+    
+//     return arr.reduce((acc,item)=>acc += item,0) == num
+// }   
+
+
+// console.log(armStrongNum(371))
+

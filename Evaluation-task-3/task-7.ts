@@ -54,11 +54,15 @@ function romanToInteger(roman: string) {
   return romanArr.reduce((acc, item) => acc + item, 0);
 }
 
-console.log(romanToInteger("MCMXCIV")); //1994
-console.log(romanToInteger("IV")); //4
-console.log(romanToInteger("V")); //5
-console.log(romanToInteger("IX")); //9
-console.log(romanToInteger("XL")); //40
-console.log(romanToInteger("MXCIV")); //1094
-console.log(romanToInteger("LX")); //60
-console.log(romanToInteger("CVI")); //106
+// console.log(romanToInteger("MCMXCIV")); //1994
+// console.log(romanToInteger("IV")); //4
+// console.log(romanToInteger("V")); //5
+// console.log(romanToInteger("IX")); //9
+// console.log(romanToInteger("XL")); //40
+// console.log(romanToInteger("MXCIV")); //1094
+// console.log(romanToInteger("LX")); //60
+// console.log(romanToInteger("CVI")); //106
+// console.log(romanToInteger("MM")); //2000
+console.log(romanToInteger("MMXXV")); //2000
+
+
