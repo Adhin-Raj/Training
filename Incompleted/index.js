@@ -1,7 +1,7 @@
-let arr1= [1,3,6,0,0]
-let arr2=[2,4,5]
-let m=3
-let n=3
+// let arr1= [1,3,6,0,0]
+// let arr2=[2,4,5]
+// let m=3
+// let n=3
 
 // for(let i=0;i<=(m+n);i++){
 //     if(arr1[i] === 0){
@@ -75,3 +75,36 @@ let n=3
 // console.log(buySell([1,1,18,1,1,1]))
 
 
+
+
+// Chain two Promises so that the second one uses the result of the first.
+
+// Write code that logs "Success" if the Promise resolves and "Error" if it rejects.
+
+// 🔹 Intermediate-Level Promise Questions
+
+// Use Promise.all to wait for three Promises that resolve at different times.
+
+// Use Promise.race to return whichever Promise finishes first.
+
+// Create a function that fetches mock user data using a Promise and returns "User found" or "User not found".
+
+// Rewrite a .then().catch() Promise chain using async/await.
+
+// Use try/catch with async/await to handle Promise errors.
+
+// 🔹 Advanced-Level Promise Questions
+
+// Implement a function retry<T>(fn: () => Promise<T>, retries: number) that retries a failed Promise.
+
+// Create a function that runs an array of tasks sequentially using Promises (not async/await).
+
+// Implement your own small version of Promise.all.
+
+// Implement a timeout wrapper:
+
+// timeout<T>(promise: Promise<T>, ms: number): Promise<T>
+
+// which rejects if the Promise doesn’t finish in time.
+
+// Write a function that limits concurrency: only n Promises can run at the same time.
